@@ -1,0 +1,208 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		6D80AAF314D7C95B000B8A19 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 6D80AAF214D7C95B000B8A19 /* main.c */; };
+		6D80AAF514D7C95B000B8A19 /* tagEventor.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6D80AAF414D7C95B000B8A19 /* tagEventor.1 */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		6D80AAEC14D7C95B000B8A19 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+				6D80AAF514D7C95B000B8A19 /* tagEventor.1 in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		6D80AAEE14D7C95B000B8A19 /* tagEventor */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = tagEventor; sourceTree = BUILT_PRODUCTS_DIR; };
+		6D80AAF214D7C95B000B8A19 /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
+		6D80AAF414D7C95B000B8A19 /* tagEventor.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = tagEventor.1; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		6D80AAEB14D7C95B000B8A19 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		6D80AAE314D7C95B000B8A19 = {
+			isa = PBXGroup;
+			children = (
+				6D80AAF114D7C95B000B8A19 /* tagEventor */,
+				6D80AAEF14D7C95B000B8A19 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		6D80AAEF14D7C95B000B8A19 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6D80AAEE14D7C95B000B8A19 /* tagEventor */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		6D80AAF114D7C95B000B8A19 /* tagEventor */ = {
+			isa = PBXGroup;
+			children = (
+				6D80AAF214D7C95B000B8A19 /* main.c */,
+				6D80AAF414D7C95B000B8A19 /* tagEventor.1 */,
+			);
+			path = tagEventor;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		6D80AAED14D7C95B000B8A19 /* tagEventor */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6D80AAF814D7C95B000B8A19 /* Build configuration list for PBXNativeTarget "tagEventor" */;
+			buildPhases = (
+				6D80AAEA14D7C95B000B8A19 /* Sources */,
+				6D80AAEB14D7C95B000B8A19 /* Frameworks */,
+				6D80AAEC14D7C95B000B8A19 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = tagEventor;
+			productName = tagEventor;
+			productReference = 6D80AAEE14D7C95B000B8A19 /* tagEventor */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		6D80AAE514D7C95B000B8A19 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				ORGANIZATIONNAME = ADP;
+			};
+			buildConfigurationList = 6D80AAE814D7C95B000B8A19 /* Build configuration list for PBXProject "tagEventor" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 6D80AAE314D7C95B000B8A19;
+			productRefGroup = 6D80AAEF14D7C95B000B8A19 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				6D80AAED14D7C95B000B8A19 /* tagEventor */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		6D80AAEA14D7C95B000B8A19 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6D80AAF314D7C95B000B8A19 /* main.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		6D80AAF614D7C95B000B8A19 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		6D80AAF714D7C95B000B8A19 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		6D80AAF914D7C95B000B8A19 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		6D80AAFA14D7C95B000B8A19 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		6D80AAE814D7C95B000B8A19 /* Build configuration list for PBXProject "tagEventor" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6D80AAF614D7C95B000B8A19 /* Debug */,
+				6D80AAF714D7C95B000B8A19 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6D80AAF814D7C95B000B8A19 /* Build configuration list for PBXNativeTarget "tagEventor" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6D80AAF914D7C95B000B8A19 /* Debug */,
+				6D80AAFA14D7C95B000B8A19 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 6D80AAE514D7C95B000B8A19 /* Project object */;
+}
