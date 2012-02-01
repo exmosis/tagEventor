@@ -1,0 +1,3 @@
+I have a touchatag and found the default service limiting.  I found the tagEventor project via google, but it looks pretty stale.  I pulled down a copy and created an Xcode project for it and got it working on my machine.  I've left out/remove a lot of the gtk/systray stuff since I'm OK with a daemon.  I also added a plist for running it as a daemon (require modification to your username).  
+
+
