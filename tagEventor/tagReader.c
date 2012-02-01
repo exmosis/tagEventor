@@ -34,7 +34,7 @@
 #define PCSC_ERROR( pMgr, rv, text) \
 if (rv != SCARD_S_SUCCESS) \
 { \
-   sprintf(messageString, "%s: %s (0x%lX)", text, pcsc_stringify_error(rv), rv); \
+   sprintf(messageString, "%s: %s (0x%iX)", text, pcsc_stringify_error(rv), rv); \
    readersLogMessage( pMgr, LOG_ERR, 0, messageString);\
 }
 #else
@@ -549,15 +549,10 @@ readersDisconnect(
 
 /************************ GET CONTACTLESS STATUS *****************/
 /* TODO : this function hasn't really been tested                */
-int
-readerGetContactlessStatus(
-                            tReaderManager  *pManager,
-                            tReader	        *pReader
-                          )
-{
+int readerGetContactlessStatus( tReaderManager  *pManager, tReader *pReader ){
     DWORD		dwRecvLength;
     BYTE		pbRecvBuffer[20];
-    LONG		rv;
+    LONG		rv = SCARD_S_SUCCESS;
     int         i;
     BOOL        automatic;
 
@@ -614,13 +609,9 @@ readerGetContactlessStatus(
 /************************ GET TAG LIST ***************************/
 /*** as the list of tags is of unknown and varying length this   */
 /* function allocates the memory for the list you must handle it!*/
-int
-readersGetTagList(
-                tReaderManager  *pManager
-                )
-{
+int readersGetTagList(tReaderManager  *pManager){
     LONG		rv = SCARD_S_SUCCESS;
-    tTag        *pTags[MAX_NUM_READERS]; /* an array of pointers to tags (that act like arrays) ! */
+    tTag        *pTags[MAX_NUM_READERS] = {NULL}; /* an array of pointers to tags (that act like arrays) ! */
     int         i, j;
     int         uniqueListIndex;
     BOOL        automatic;
@@ -648,13 +639,11 @@ readersGetTagList(
     {
         /* make sure it's initialized, as depending on reader settings we may skip over */
         /* one of these pointers in the array and later try to free an invalid pointer */
-        pTags[i] = NULL;
         pManager->readers[i].tagList.numTags = 0;
 
         /* check we are connected, have a driver and should be reading it */
         if ( ( pManager->readers[i].hCard != NULL ) && ( pManager->readers[i].pDriver != NULL ) &&
-             ( automatic || readersSettingBitmapNumberTest( pManager, i ) ) )
-        {
+             ( automatic || readersSettingBitmapNumberTest( pManager, i ) ) ){
             /* I'd normally check if a tag is present using readerGetContactlessStatus() before    */
             /* querying the tag list, but all my testing to date has failed to get the contactless */
             /* status APDU to work, it always returns D5 05 00 00 00 80 90 00 to indicate no tag   */
@@ -665,8 +654,7 @@ readersGetTagList(
 
             /* call the reader's associated driver's function to read the tag list */
             rv = ((tReaderDriver *)(pManager->readers[i].pDriver))->getTagList( &(pManager->readers[i]), pTags[i] );
-            if ( rv != SCARD_S_SUCCESS )
-            {
+            if ( rv != SCARD_S_SUCCESS ) {
                 PCSC_ERROR( pManager, rv, "driver->getTagList():");
                 RESET_READER( pManager->readers[i] );
                 if ( pTags[i] != NULL )
@@ -682,32 +670,27 @@ readersGetTagList(
     pManager->tagList.pTags = NULL; /* for the zero tag case */
     uniqueListIndex = 0;
 
-    if ( pManager->tagList.numTags > 0 )
-    {
+    if ( pManager->tagList.numTags > 0 ) {
         pManager->tagList.pTags = (tTag *)malloc( (pManager->tagList.numTags) * sizeof( tTag ) );
-
         /* copy all the individual lists across into the unique list */
-        for( i = 0; i < pManager->nbReaders; i++)
-        {
+        for( i = 0; i < pManager->nbReaders; i++) {
             /* make the pointer in the per-reader structure point to it's parts of the overall list */
             pManager->readers[i].tagList.pTags = &(pManager->tagList.pTags[uniqueListIndex]);
-
             /* for each of the tags detected in this reader */
-            for ( j = 0; j < pManager->readers[i].tagList.numTags; j++ )
-            {
+            for ( j = 0; j < pManager->readers[i].tagList.numTags; j++ ) {
                 /* copy the tag from the tempory list to the unique one */
-                pManager->tagList.pTags[uniqueListIndex] = (pTags[i])[j];
-
-                TAG_TYPE_NAME_FROM_ENUM( pManager->tagList.pTags[uniqueListIndex].tagType, namePointer );
-
-                sprintf(messageString, "Tag ID:   %s\tType: %s", pManager->tagList.pTags[uniqueListIndex].uid, namePointer);
-
-                readersLogMessage( pManager, LOG_INFO, 2, messageString);
-                uniqueListIndex++;
+                tTag *temp = pTags[i];
+                if(temp){
+                    pManager->tagList.pTags[uniqueListIndex] = temp[j];
+                    TAG_TYPE_NAME_FROM_ENUM( pManager->tagList.pTags[uniqueListIndex].tagType, namePointer );
+                    sprintf(messageString, "Tag ID:   %s\tType: %s", pManager->tagList.pTags[uniqueListIndex].uid, namePointer);
+                    readersLogMessage( pManager, LOG_INFO, 2, messageString);
+                    uniqueListIndex++;
+                }
             }
 
             /* free the space allocated for that list, even if it was never filled with anything */
-            if ( pTags[i] )
+            if (pTags[i])
                 free( pTags[i] );
         }
     }

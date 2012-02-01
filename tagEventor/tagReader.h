@@ -85,9 +85,10 @@ extern void             readersLogMessage(  const tReaderManager    *pManager,
                                             int	    	            messageLevel,
                                             const char 	            *message);
 
-extern void eventDispatch(tEventType         eventType,
-                            tTag              *pTag,
-                            int                readerNumber,
-                            tReaderManager    *pManager );
+extern void eventDispatch(tEventType eventType, tTag *pTag, int readerNumber,tReaderManager *pManager );
+
+
+int readerGetContactlessStatus( tReaderManager  *pManager, tReader *pReader );
+
 
 #endif
