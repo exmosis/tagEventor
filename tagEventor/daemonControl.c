@@ -16,20 +16,8 @@
   limitations under the License.
 */
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <fcntl.h>
-#include <string.h>
-#include <unistd.h>
-#include <getopt.h>
-#include <syslog.h>
 
-#include <signal.h>
-#include <sys/stat.h>  /* for umask() */
-#include <limits.h>
-
-#include "constants.h"
-#include "tagReader.h"
+#include "daemonControl.h"
 
 /************* VARIABLES STATIC TO THIS FILE  ********************/
 static  int		        lockFile = -1;
@@ -37,9 +25,7 @@ static  char		    lockFilename[PATH_MAX];
 static  unsigned char	runningAsDaemon = FALSE;
 
 /************************ STOP DAEMON **************/
-void
-stopDaemon( const tReaderManager   *pManager )
-{
+void stopDaemon( const tReaderManager   *pManager ){
    char		messageString[MAX_LOG_MESSAGE];
    char 	pidString[20];
    int		pid;
@@ -91,9 +77,7 @@ stopDaemon( const tReaderManager   *pManager )
 /********************** GET LOCK OR DIE *********************/
 /* This runs in the forked daemon process */
 /* make sure we are the only running copy for this reader number */
-static void
-getLockOrDie( const tReaderManager *pManager )
-{
+static void getLockOrDie( const tReaderManager *pManager ){
    char 	pidString[20];
    char		messageString[MAX_LOG_MESSAGE];
    struct flock lock;
@@ -136,9 +120,7 @@ getLockOrDie( const tReaderManager *pManager )
 }
 /********************** GET LOCK OR DIE *********************/
 
-void
-daemonTerminate( const tReaderManager *pManager )
-{
+void daemonTerminate( const tReaderManager *pManager ){
 
     if ( runningAsDaemon )
     {
@@ -151,11 +133,7 @@ daemonTerminate( const tReaderManager *pManager )
 }
 
 /************************ DAEMONIZE *************************/
-void
-daemonize(
-            tReaderManager *pManager
-            )
-{
+void daemonize( tReaderManager *pManager ){
    int		pid;
    char		messageString[MAX_LOG_MESSAGE];
 

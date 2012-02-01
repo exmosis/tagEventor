@@ -21,7 +21,17 @@
 
 /* this is needed for definitions of different types of log messages etc */
 #include <syslog.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdarg.h>
 
+#include <string.h>
+#include <unistd.h>
+
+
+#include <PCSC/wintypes.h>
+#include <PCSC/winscard.h>
+#include "readerDriver.h"
 #include "tagReaderTypes.h"
 
 /**************************** CONSTANTS ******************************/

@@ -16,29 +16,8 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <fcntl.h>
-#include <syslog.h>
-#include <string.h>
-#include <unistd.h>
-#include <errno.h>
-#include <sys/stat.h>       /* for umask() */
-#include <limits.h>
-
-#include "constants.h"
 #include "rulesTable.h"
-#include "tagEventor.h"
 
-
-#define SCRIPT_DOES_NOT_EXIST (127)
-
-/************* VARIABLES STATIC TO THIS FILE  ********************/
-/*
- * this is the list of built-in commands, in the reverse order of which they
- * will be tried
- */
-#define NUM_DEFAULT_COMMANDS   (4)
 
 static tRulesTableEntry defaultCommands[NUM_DEFAULT_COMMANDS] = {
     {"*", DEFAULT_COMMAND_DIR, GENERIC_MATCH, "Match any tag, then run script named 'generic' in application script dir", TRUE},
@@ -203,14 +182,7 @@ rulesTableRead(void)
 
 }
 
-static int
-execScript(
-       const char *scriptPath,
-       const char *argv0,
-       const char *tagUID,
-       const char *eventTypeString
-)
-{
+static int execScript(const char *scriptPath, const char *argv0, const char *tagUID, const char *eventTypeString ){
     char            messageString[MAX_LOG_MESSAGE];
     int             ret;
 

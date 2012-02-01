@@ -19,8 +19,24 @@
 #ifndef TAG_EVENTOR_INCLUDED
 #define TAG_EVENTOR_INCLUDED
 
+#include <stdio.h>
+#include <stdlib.h>
+#include <fcntl.h>
+#include <string.h>
+#include <unistd.h>
+#include <getopt.h>
+#include <syslog.h>
+
+#include <signal.h>
+#include <sys/stat.h>  /* for umask() */
+#include <limits.h>
+
+#include <PCSC/winscard.h>
+
 #include "tagReader.h"
+#include "constants.h"
 #include "stringConstants.h"
+#include "rulesTable.h"
 
 #ifndef TRUE
 #define TRUE 1

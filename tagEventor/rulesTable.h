@@ -17,7 +17,27 @@
 */
 
 #include "tagReader.h"
-#include "tagEventor.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <fcntl.h>
+#include <syslog.h>
+#include <string.h>
+#include <unistd.h>
+#include <errno.h>
+#include <sys/stat.h>       /* for umask() */
+#include <limits.h>
+
+#include "constants.h"
+#include "tagReader.h"
+
+#define SCRIPT_DOES_NOT_EXIST (127)
+
+/************* VARIABLES STATIC TO THIS FILE  ********************/
+/*
+ * this is the list of built-in commands, in the reverse order of which they
+ * will be tried
+ */
+#define NUM_DEFAULT_COMMANDS   (4)
 
 #ifndef TRUE
 #define TRUE 1
@@ -47,4 +67,4 @@ extern int                      rulesTableRead( void );
 extern void                     rulesTableEntryEnable( int index, char enable );
 extern const tRulesTableEntry   *rulesTableEntryGet( int index );
 extern unsigned char            rulesTableEventDispatch( tEventType eventType, const tTag *pTag );
-
+extern tReaderManager  readerManager;

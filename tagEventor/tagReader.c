@@ -16,17 +16,9 @@
   limitations under the License.
 */
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <unistd.h>
-#include <stdarg.h>
-
-#include <PCSC/wintypes.h>
-#include <PCSC/winscard.h>
 
 #include "tagReader.h"
-#include "readerDriver.h"
+
 
 /********************** HACKS   !!!! *****************************/
 /* It seems this error code is returned on versions of pcsclite.h*/
@@ -486,31 +478,25 @@ int readersConnect (
                 while ( (readerDriverTable[i] != NULL) && (readerSupported == FALSE) )
                     rv = readerDriverTable[i++]->readerCheck( &(pManager->readers[num]), &readerSupported );
 
-                if ( rv != SCARD_S_SUCCESS )
-                {
+                if ( rv != SCARD_S_SUCCESS ) {
                     RESET_READER( pManager->readers[num] );
                     PCSC_ERROR( pManager, rv, "readerCheck:" );
                     return( rv );
                 }
 
                 /* we couldn't find a driver that knows how to handle this reader... */
-                if ( ( readerSupported == FALSE) )
-                {
+                if (readerSupported == FALSE) {
                     pManager->readers[num].pDriver = NULL;
                     sprintf(messageString, "Reader (%s) not supported by any known driver", pManager->readers[num].name );
                     readersLogMessage( pManager, LOG_ERR, 0, messageString);
                     return (SCARD_E_UNKNOWN_READER);
-                }
-                else
-                {
+                } else {
                     /* if we got this far then a driver was successfully found, remember it! */
                     pManager->readers[num].pDriver = readerDriverTable[i -1];
                     pManager->readers[num].driverDescriptor = readerDriverTable[i -1]->driverDescriptor;
                     eventDispatch( READER_DETECTED, NULL, num, pManager );
-
                 }
-            }
-            else
+            } else
                 RESET_READER( pManager->readers[num] );
         }
     }

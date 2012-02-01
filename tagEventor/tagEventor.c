@@ -16,23 +16,7 @@
   limitations under the License.
 */
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <fcntl.h>
-#include <string.h>
-#include <unistd.h>
-#include <getopt.h>
-#include <syslog.h>
 
-#include <signal.h>
-#include <sys/stat.h>  /* for umask() */
-#include <limits.h>
-
-#include <PCSC/winscard.h>
-
-#include "tagReader.h"
-
-#include "constants.h"
 #include "tagEventor.h"
 
 /*************************** MACROS ************************/
@@ -128,13 +112,7 @@ appVerbosityLevelGet( void )
 }
 
 /************************ PARSE COMMAND LINE OPTIONS ********/
-static void
-parseCommandLine(
-                int 		    argc,
-                char 		    *argv[],
-                tRunOptions     *pRunOptions
-                )
-{
+static void parseCommandLine(int argc, char ** argv,tRunOptions *pRunOptions){
 
    unsigned char parseError = FALSE;
    int		option, newDelay, newVerbosity;
@@ -589,7 +567,7 @@ pollCallback(
 }
 
 /************************ MAIN ******************************/
-int main (int argc, const char * argv[]){
+int main (int argc, char ** argv){
 
     tRunOptions	runOptions;
 

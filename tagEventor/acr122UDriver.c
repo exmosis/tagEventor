@@ -483,13 +483,7 @@ LONG   acr122UGetTagList(
     /* Get ATR so we can tell if there is a SAM in the reader */
     dwAtrLen = sizeof(pbAtr);
     dwReaderLen = sizeof(pbReader);
-    rv = SCardStatus( (SCARDHANDLE) (pReader->hCard), pbReader, &dwReaderLen, &dwState, &dwProt,
-                     pbAtr, &dwAtrLen);
-#if 0
-    sprintf(messageString, "ATR: ");
-    sPrintBufferHex( (messageString + strlen("ATR: ")), dwAtrLen, pbAtr);
-    readersLogMessage(LOG_INFO, 3, messageString);
-#endif
+    SCardStatus( (SCARDHANDLE) (pReader->hCard), pbReader, &dwReaderLen, &dwState, &dwProt, pbAtr, &dwAtrLen);
 
     dwRecvLength = sizeof(pbRecvBuffer);
     rv = apduSend(pReader->hCard, APDU_SET_RETRY, sizeof(APDU_SET_RETRY),
@@ -533,8 +527,7 @@ LONG   acr122UGetTagList(
     }
 
     /* Turning RATS off thus a JCOP tag will be detected as emulating a DESFIRE */
-    rv = apduSend(pReader->hCard, APDU_RATS_14443_4_OFF, sizeof(APDU_RATS_14443_4_OFF),
-                      pbRecvBuffer, &dwRecvLength);
+    apduSend(pReader->hCard, APDU_RATS_14443_4_OFF, sizeof(APDU_RATS_14443_4_OFF), pbRecvBuffer, &dwRecvLength);
 
     return( SCARD_S_SUCCESS );
 
