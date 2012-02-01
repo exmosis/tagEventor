@@ -80,22 +80,38 @@
 		6D80AAF114D7C95B000B8A19 /* tagEventor */ = {
 			isa = PBXGroup;
 			children = (
-				6D80AAFB14D8C703000B8A19 /* constants.h */,
-				6D80AAFC14D8C703000B8A19 /* daemonControl.c */,
-				6D80AAFD14D8C703000B8A19 /* rulesTable.c */,
-				6D80AAFE14D8C703000B8A19 /* rulesTable.h */,
-				6D80AAFF14D8C703000B8A19 /* stringConstants.h */,
-				6D80AB0014D8C703000B8A19 /* tagEventor.c */,
-				6D80AB0514D8C733000B8A19 /* acr122UDriver.c */,
-				6D80AB0614D8C733000B8A19 /* readerDriver.h */,
-				6D80AB0714D8C733000B8A19 /* tagMifareUltra.h */,
-				6D80AB0814D8C733000B8A19 /* tagReader.c */,
-				6D80AB0914D8C733000B8A19 /* tagReader.h */,
-				6D80AB0A14D8C733000B8A19 /* tagReaderTypes.h */,
-				6D80AB0114D8C703000B8A19 /* tagEventor.h */,
+				6D80AB0F14D8CAB1000B8A19 /* New Group */,
+				6D80AB1014D8CAC8000B8A19 /* New Group1 */,
 				6D80AAF414D7C95B000B8A19 /* tagEventor.1 */,
 			);
 			path = tagEventor;
+			sourceTree = "<group>";
+		};
+		6D80AB0F14D8CAB1000B8A19 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+				6D80AAFB14D8C703000B8A19 /* constants.h */,
+				6D80AAFE14D8C703000B8A19 /* rulesTable.h */,
+				6D80AAFF14D8C703000B8A19 /* stringConstants.h */,
+				6D80AB0614D8C733000B8A19 /* readerDriver.h */,
+				6D80AB0714D8C733000B8A19 /* tagMifareUltra.h */,
+				6D80AB0914D8C733000B8A19 /* tagReader.h */,
+				6D80AB0A14D8C733000B8A19 /* tagReaderTypes.h */,
+				6D80AB0114D8C703000B8A19 /* tagEventor.h */,
+			);
+			name = "New Group";
+			sourceTree = "<group>";
+		};
+		6D80AB1014D8CAC8000B8A19 /* New Group1 */ = {
+			isa = PBXGroup;
+			children = (
+				6D80AAFC14D8C703000B8A19 /* daemonControl.c */,
+				6D80AAFD14D8C703000B8A19 /* rulesTable.c */,
+				6D80AB0014D8C703000B8A19 /* tagEventor.c */,
+				6D80AB0514D8C733000B8A19 /* acr122UDriver.c */,
+				6D80AB0814D8C733000B8A19 /* tagReader.c */,
+			);
+			name = "New Group1";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
