@@ -7,8 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6D80AAF314D7C95B000B8A19 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 6D80AAF214D7C95B000B8A19 /* main.c */; };
 		6D80AAF514D7C95B000B8A19 /* tagEventor.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6D80AAF414D7C95B000B8A19 /* tagEventor.1 */; };
+		6D80AB0214D8C703000B8A19 /* daemonControl.c in Sources */ = {isa = PBXBuildFile; fileRef = 6D80AAFC14D8C703000B8A19 /* daemonControl.c */; };
+		6D80AB0314D8C703000B8A19 /* rulesTable.c in Sources */ = {isa = PBXBuildFile; fileRef = 6D80AAFD14D8C703000B8A19 /* rulesTable.c */; };
+		6D80AB0414D8C703000B8A19 /* tagEventor.c in Sources */ = {isa = PBXBuildFile; fileRef = 6D80AB0014D8C703000B8A19 /* tagEventor.c */; };
+		6D80AB0B14D8C733000B8A19 /* acr122UDriver.c in Sources */ = {isa = PBXBuildFile; fileRef = 6D80AB0514D8C733000B8A19 /* acr122UDriver.c */; };
+		6D80AB0C14D8C733000B8A19 /* tagReader.c in Sources */ = {isa = PBXBuildFile; fileRef = 6D80AB0814D8C733000B8A19 /* tagReader.c */; };
+		6D80AB0E14D8C9AB000B8A19 /* PCSC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D80AB0D14D8C9AB000B8A19 /* PCSC.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -26,8 +31,21 @@
 
 /* Begin PBXFileReference section */
 		6D80AAEE14D7C95B000B8A19 /* tagEventor */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = tagEventor; sourceTree = BUILT_PRODUCTS_DIR; };
-		6D80AAF214D7C95B000B8A19 /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
 		6D80AAF414D7C95B000B8A19 /* tagEventor.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = tagEventor.1; sourceTree = "<group>"; };
+		6D80AAFB14D8C703000B8A19 /* constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = constants.h; sourceTree = "<group>"; };
+		6D80AAFC14D8C703000B8A19 /* daemonControl.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = daemonControl.c; sourceTree = "<group>"; };
+		6D80AAFD14D8C703000B8A19 /* rulesTable.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = rulesTable.c; sourceTree = "<group>"; };
+		6D80AAFE14D8C703000B8A19 /* rulesTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rulesTable.h; sourceTree = "<group>"; };
+		6D80AAFF14D8C703000B8A19 /* stringConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stringConstants.h; sourceTree = "<group>"; };
+		6D80AB0014D8C703000B8A19 /* tagEventor.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = tagEventor.c; sourceTree = "<group>"; };
+		6D80AB0114D8C703000B8A19 /* tagEventor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tagEventor.h; sourceTree = "<group>"; };
+		6D80AB0514D8C733000B8A19 /* acr122UDriver.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = acr122UDriver.c; sourceTree = "<group>"; };
+		6D80AB0614D8C733000B8A19 /* readerDriver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = readerDriver.h; sourceTree = "<group>"; };
+		6D80AB0714D8C733000B8A19 /* tagMifareUltra.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tagMifareUltra.h; sourceTree = "<group>"; };
+		6D80AB0814D8C733000B8A19 /* tagReader.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = tagReader.c; sourceTree = "<group>"; };
+		6D80AB0914D8C733000B8A19 /* tagReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tagReader.h; sourceTree = "<group>"; };
+		6D80AB0A14D8C733000B8A19 /* tagReaderTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tagReaderTypes.h; sourceTree = "<group>"; };
+		6D80AB0D14D8C9AB000B8A19 /* PCSC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PCSC.framework; path = System/Library/Frameworks/PCSC.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,6 +53,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6D80AB0E14D8C9AB000B8A19 /* PCSC.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -44,6 +63,7 @@
 		6D80AAE314D7C95B000B8A19 = {
 			isa = PBXGroup;
 			children = (
+				6D80AB0D14D8C9AB000B8A19 /* PCSC.framework */,
 				6D80AAF114D7C95B000B8A19 /* tagEventor */,
 				6D80AAEF14D7C95B000B8A19 /* Products */,
 			);
@@ -60,7 +80,19 @@
 		6D80AAF114D7C95B000B8A19 /* tagEventor */ = {
 			isa = PBXGroup;
 			children = (
-				6D80AAF214D7C95B000B8A19 /* main.c */,
+				6D80AAFB14D8C703000B8A19 /* constants.h */,
+				6D80AAFC14D8C703000B8A19 /* daemonControl.c */,
+				6D80AAFD14D8C703000B8A19 /* rulesTable.c */,
+				6D80AAFE14D8C703000B8A19 /* rulesTable.h */,
+				6D80AAFF14D8C703000B8A19 /* stringConstants.h */,
+				6D80AB0014D8C703000B8A19 /* tagEventor.c */,
+				6D80AB0514D8C733000B8A19 /* acr122UDriver.c */,
+				6D80AB0614D8C733000B8A19 /* readerDriver.h */,
+				6D80AB0714D8C733000B8A19 /* tagMifareUltra.h */,
+				6D80AB0814D8C733000B8A19 /* tagReader.c */,
+				6D80AB0914D8C733000B8A19 /* tagReader.h */,
+				6D80AB0A14D8C733000B8A19 /* tagReaderTypes.h */,
+				6D80AB0114D8C703000B8A19 /* tagEventor.h */,
 				6D80AAF414D7C95B000B8A19 /* tagEventor.1 */,
 			);
 			path = tagEventor;
@@ -116,7 +148,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6D80AAF314D7C95B000B8A19 /* main.c in Sources */,
+				6D80AB0214D8C703000B8A19 /* daemonControl.c in Sources */,
+				6D80AB0314D8C703000B8A19 /* rulesTable.c in Sources */,
+				6D80AB0414D8C703000B8A19 /* tagEventor.c in Sources */,
+				6D80AB0B14D8C733000B8A19 /* acr122UDriver.c in Sources */,
+				6D80AB0C14D8C733000B8A19 /* tagReader.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
