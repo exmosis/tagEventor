@@ -46,6 +46,7 @@
 		6D80AB0914D8C733000B8A19 /* tagReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tagReader.h; sourceTree = "<group>"; };
 		6D80AB0A14D8C733000B8A19 /* tagReaderTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tagReaderTypes.h; sourceTree = "<group>"; };
 		6D80AB0D14D8C9AB000B8A19 /* PCSC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PCSC.framework; path = System/Library/Frameworks/PCSC.framework; sourceTree = SDKROOT; };
+		6D80AB1114D8CCB5000B8A19 /* daemonControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = daemonControl.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +99,7 @@
 				6D80AB0914D8C733000B8A19 /* tagReader.h */,
 				6D80AB0A14D8C733000B8A19 /* tagReaderTypes.h */,
 				6D80AB0114D8C703000B8A19 /* tagEventor.h */,
+				6D80AB1114D8CCB5000B8A19 /* daemonControl.h */,
 			);
 			name = "New Group";
 			sourceTree = "<group>";
