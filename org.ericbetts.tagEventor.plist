@@ -13,6 +13,8 @@
 	<key>ProgramArguments</key>
 	<array>
 		<string>/Users/bettse/bin/tagEventor</string>
+		<string>-p</string>
+		<string>500</string>
 	</array>
 	<key>QueueDirectories</key>
 	<array/>
