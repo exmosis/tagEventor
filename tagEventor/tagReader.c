@@ -611,7 +611,7 @@ int readerGetContactlessStatus( tReaderManager  *pManager, tReader *pReader ){
 /* function allocates the memory for the list you must handle it!*/
 int readersGetTagList(tReaderManager  *pManager){
     LONG		rv = SCARD_S_SUCCESS;
-    tTag        *pTags[MAX_NUM_READERS] = {NULL}; /* an array of pointers to tags (that act like arrays) ! */
+    tTag*       pTags[MAX_NUM_READERS] = {NULL}; /* an array of pointers to tags (that act like arrays) ! */
     int         i, j;
     int         uniqueListIndex;
     BOOL        automatic;
@@ -635,7 +635,7 @@ int readersGetTagList(tReaderManager  *pManager){
     pManager->tagList.numTags = 0;
 
     /* for all readers we were connected to PREVIOUSLY or are now after AUTMATIC reconnect */
-    for ( i = 0; i < pManager->nbReaders; i++ )
+    for ( i = 0; i< MAX_NUM_READERS && i < pManager->nbReaders; i++ )
     {
         /* make sure it's initialized, as depending on reader settings we may skip over */
         /* one of these pointers in the array and later try to free an invalid pointer */
@@ -650,15 +650,16 @@ int readersGetTagList(tReaderManager  *pManager){
             /* is present. I have reported this issue to ACS by e-mail - Andrew                    */
 
             /* allocate the structure for this reader to read tag list into upto max size */
-            pTags[i] = (tTag *)malloc( ( ((tReaderDriver *)(pManager->readers[i].pDriver))->maxTags ) * sizeof(tTag) );
-
+            int maxTags = ((tReaderDriver *)(pManager->readers[i].pDriver))->maxTags;
+            pTags[i] = (tTag *)malloc( maxTags * sizeof(tTag) );
             /* call the reader's associated driver's function to read the tag list */
             rv = ((tReaderDriver *)(pManager->readers[i].pDriver))->getTagList( &(pManager->readers[i]), pTags[i] );
             if ( rv != SCARD_S_SUCCESS ) {
                 PCSC_ERROR( pManager, rv, "driver->getTagList():");
                 RESET_READER( pManager->readers[i] );
-                if ( pTags[i] != NULL )
+                if ( pTags[i] != NULL ){
                     free( pTags[i] );
+                }
                 pTags[i] = NULL;
             }
             /* accumulate the total number of tags found */
@@ -673,7 +674,7 @@ int readersGetTagList(tReaderManager  *pManager){
     if ( pManager->tagList.numTags > 0 ) {
         pManager->tagList.pTags = (tTag *)malloc( (pManager->tagList.numTags) * sizeof( tTag ) );
         /* copy all the individual lists across into the unique list */
-        for( i = 0; i < pManager->nbReaders; i++) {
+        for( i = 0; i< MAX_NUM_READERS && i < pManager->nbReaders; i++) {
             /* make the pointer in the per-reader structure point to it's parts of the overall list */
             pManager->readers[i].tagList.pTags = &(pManager->tagList.pTags[uniqueListIndex]);
             /* for each of the tags detected in this reader */
@@ -688,11 +689,14 @@ int readersGetTagList(tReaderManager  *pManager){
                     uniqueListIndex++;
                 }
             }
-
-            /* free the space allocated for that list, even if it was never filled with anything */
-            if (pTags[i])
-                free( pTags[i] );
         }
+    }
+    
+    for( i = 0; i < MAX_NUM_READERS && i < pManager->nbReaders; i++) {
+        /* free the space allocated for that list, even if it was never filled with anything */
+        if (pTags[i]){
+            free( pTags[i] );
+        }    
     }
 
     sprintf( messageString, "Total Number of tags: %d", (int)(pManager->tagList.numTags) );
